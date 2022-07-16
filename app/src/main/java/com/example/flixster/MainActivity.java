@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         JSONArray m = json.jsonObject.getJSONArray("results");
                         for (int i=0; i < m.length(); i++ ) {
-                            m[i]
+                            Log.d(TAG, m.get(i).toString());
                         }
                     } catch (JSONException e) {
                         //todo

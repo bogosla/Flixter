@@ -1,11 +1,13 @@
 package com.example.flixster.models;
 
+import java.util.Map;
+
 public class Movie {
-    private String title;
-    private  String overview;
-    private String poster_path;
-    private  String backdrop_path;
-    private float vote_average;
+    private final String title;
+    private final String overview;
+    private final String poster_path;
+    private final String backdrop_path;
+    private final float vote_average;
 
 
     public Movie(String title, String overview, String poster_path, String backdrop_path, float vote_average) {
@@ -17,11 +19,13 @@ public class Movie {
     }
 
     public boolean has_5_star() {
-        if (((int)this.vote_average) >= 5) {
-            return true;
-        }
-        return false;
+        return ((int) this.vote_average) >= 5;
     }
+
+    public Movie fromJson(Map<String, String> json) {
+
+        return new Movie(json.get("title"), json.get("overview"), json.get("poster_path"), json.get("backdrop_path"), Float.parseFloat(json.get("vote_average")));
+}
 
     public String getTitle() {
         return title;
