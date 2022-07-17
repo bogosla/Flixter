@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/itemImg"
-        android:layout_width="324dp"
+        android:layout_width="184dp"
         android:layout_height="169dp"
         android:contentDescription="@string/dsc_image"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -16,27 +16,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="7dp"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/itemTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
+            android:layout_marginBottom="7dp"
             android:padding="7dp"
-            android:textStyle="bold"
-            android:layout_marginBottom="7dp" />
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/itemOverview"
             android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:textSize="15dp"
-            android:typeface="sans"
-            android:padding="7dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:maxHeight="118dp"
-            android:maxLines="4" />
+            android:maxLines="4"
+            android:padding="7dp"
+            android:textSize="15dp"
+            android:typeface="sans" />
     </LinearLayout>
 </LinearLayout>

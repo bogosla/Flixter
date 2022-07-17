@@ -1,6 +1,7 @@
 package com.example.flixster.models;
 
-import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Movie {
     private final String title;
@@ -8,6 +9,7 @@ public class Movie {
     private final String poster_path;
     private final String backdrop_path;
     private final float vote_average;
+    private final static String BASE_URL = "https://image.tmdb.org/t/p/w500";
 
 
     public Movie(String title, String overview, String poster_path, String backdrop_path, float vote_average) {
@@ -19,12 +21,11 @@ public class Movie {
     }
 
     public boolean has_5_star() {
-        return ((int) this.vote_average) >= 5;
+        return ((int) this.vote_average) > 5;
     }
 
-    public Movie fromJson(Map<String, String> json) {
-
-        return new Movie(json.get("title"), json.get("overview"), json.get("poster_path"), json.get("backdrop_path"), Float.parseFloat(json.get("vote_average")));
+    public static Movie fromJson(JSONObject json) throws JSONException {
+        return new Movie(json.getString("title"), json.getString("overview"), json.getString("poster_path"), json.getString("backdrop_path"), (float)(json.getDouble("vote_average")));
 }
 
     public String getTitle() {
@@ -36,11 +37,11 @@ public class Movie {
     }
 
     public String getPoster_path() {
-        return poster_path;
+        return BASE_URL + poster_path;
     }
 
     public String getBackdrop_path() {
-        return backdrop_path;
+        return BASE_URL + backdrop_path;
     }
     public float getVote_average() {
         return vote_average;
