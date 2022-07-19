@@ -27,6 +27,7 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 
 ### Notes
 Describe any challenges encountered while building the app.
+
 While using glide to display images I did not pay attention to the format of fields (poster_path, backdrop_path) causes images don't display
 I had to build a full path(url) contatenated a base_url with fields containing paths.
 
