@@ -53,7 +53,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         Movie movie = mMovies.get(position);
         RequestOptions options = new RequestOptions()
                 .centerCrop()
-                .placeholder(R.mipmap.ic_launcher)
+                .placeholder(R.drawable.movie)
                 .error(R.mipmap.ic_launcher_round);
         // if orientation in portrait and movie got 5 star, display backdrop_image
         if (movie.has_5_star() && getOrientation() == 1) {
