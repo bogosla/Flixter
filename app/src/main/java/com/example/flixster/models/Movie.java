@@ -2,20 +2,24 @@ package com.example.flixster.models;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
+@Parcel
 public class Movie {
-    private final int movie_id;
-    private final String title;
-    private final String overview;
-    private final String poster_path;
-    private final String backdrop_path;
-    private final float vote_average;
-    private final String release_date;
-    private final double popularity;
-    private final Boolean adult;
+    private int movie_id;
+    private String title;
+    private String overview;
+    private String poster_path;
+    private String backdrop_path;
+    private float vote_average;
+    private String release_date;
+    private double popularity;
+    private Boolean adult;
     private final static String BASE_URL = "https://image.tmdb.org/t/p/w500";
-    private String BASE_URL_MOVIE = "https://api.themoviedb.org/3/movie/$id/videos?api_key=$api_key";
+    private final String BASE_URL_MOVIE = "https://api.themoviedb.org/3/movie/%d/videos";
 
+    // Needed by Parceler library
+    public Movie() {}
 
     public Movie(String title, String overview, String poster_path, String backdrop_path, float vote_average, int id, String release_date, double popularity, Boolean adult) {
         this.title = title;
@@ -61,7 +65,7 @@ public class Movie {
 
     public String getBackdrop_path() { return BASE_URL + backdrop_path; }
 
-    public String getMovie_path(int id, String api_key) { return String.format(BASE_URL_MOVIE, id, api_key); }
+    public String getMovie_path() { return String.format(BASE_URL_MOVIE, movie_id); }
 
     public float getVote_average() { return vote_average; }
 
@@ -69,7 +73,8 @@ public class Movie {
 
     public String getRelease_date() { return release_date; }
 
-    public Boolean getAdult() {
-        return adult;
-    }
+    public Boolean getAdult() { return adult; }
+
+    @Override
+    public String toString() { return String.format("Movie{%s}", title); }
 }

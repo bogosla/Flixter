@@ -19,9 +19,21 @@ import com.example.flixster.models.Movie;
 import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<Movie> mMovies;
     private static final int HAS5STAR = 1;
+
+    private List<Movie> mMovies;
     private Context mContext;
+    private OnClickListener mClickListener;
+
+    public void setClickListener(OnClickListener clickListener) {
+        this.mClickListener = clickListener;
+    }
+
+
+    interface OnClickListener {
+        public void onItemClicked(View view, int position, Movie movie);
+    }
+
 
     public MovieAdapter(List<Movie> movies, Context ctx) {
         this.mMovies = movies;
@@ -31,18 +43,14 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public int getItemViewType(int position) {
         Movie current = mMovies.get(position);
-        if (current.has_5_star()) {
-            return HAS5STAR;
-        }
-        return 0;
+        return current.has_5_star() ? HAS5STAR : 0;
     }
-
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        //
+
         if (viewType == HAS5STAR && getOrientation() == 1)
             return new ViewHolderStar(inflater.inflate(R.layout.movie_item_star, parent, false));
         return new ViewHolder(inflater.inflate(R.layout.movie_item, parent, false));
@@ -82,7 +90,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         return orientation == Configuration.ORIENTATION_PORTRAIT ? 1 : 0;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView titleTextview;
         public TextView overviewTextview;
         public ImageView imageview;
@@ -92,15 +100,28 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             this.titleTextview = itemView.findViewById(R.id.itemTitle);
             this.imageview = itemView.findViewById(R.id.itemImg);
             this.overviewTextview = itemView.findViewById(R.id.itemOverview);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mClickListener.onItemClicked(view, getAdapterPosition(), mMovies.get(getAdapterPosition()));
+                }
+            });
         }
     }
 
-    public static class ViewHolderStar extends RecyclerView.ViewHolder {
+    // Holder for item with more 5 star
+    public class ViewHolderStar extends RecyclerView.ViewHolder {
         public ImageView imageview2;
 
         public ViewHolderStar(@NonNull View itemView) {
             super(itemView);
             this.imageview2 = itemView.findViewById(R.id.itemImg2);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mClickListener.onItemClicked(view, getAdapterPosition(), mMovies.get(getAdapterPosition()));
+                }
+            });
         }
     }
 }
