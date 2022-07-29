@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.flixster.models.Movie;
 
@@ -20,7 +21,6 @@ import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int HAS5STAR = 1;
-
     private List<Movie> mMovies;
     private Context mContext;
     private OnClickListener mClickListener;
@@ -29,11 +29,9 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         this.mClickListener = clickListener;
     }
 
-
     interface OnClickListener {
         public void onItemClicked(View view, int position, Movie movie);
     }
-
 
     public MovieAdapter(List<Movie> movies, Context ctx) {
         this.mMovies = movies;
@@ -59,10 +57,14 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Movie movie = mMovies.get(position);
+        int radius = 12;
+
         RequestOptions options = new RequestOptions()
                 .centerCrop()
                 .placeholder(R.drawable.movie)
+                .transform(new RoundedCorners(radius))
                 .error(R.mipmap.ic_launcher_round);
+
         // if orientation in portrait and movie got 5 star, display backdrop_image
         if (movie.has_5_star() && getOrientation() == 1) {
              Glide.with(mContext).load(movie.getBackdrop_path()).apply(options).into(((ViewHolderStar)holder).imageview2);
