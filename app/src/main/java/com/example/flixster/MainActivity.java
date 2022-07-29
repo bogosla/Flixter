@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     MovieAdapter adapter;
     private final List<Movie> movies = new ArrayList<>();
-    private static final String APIKEY = "a07e22bc18f5cb106bfe4cc1f83ad8ed";
+    public static final String APIKEY = "a07e22bc18f5cb106bfe4cc1f83ad8ed";
     private static final String ENDPOINT = "https://api.themoviedb.org/3/movie/now_playing";
 
     @Override
@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MovieAdapter(movies, this);
 
         adapter.setClickListener((view, position, movie) -> {
-            Log.d(TAG, movie.toString());
 
             // start Detail activity
             Intent i = new Intent(MainActivity.this, DetailActivity.class);

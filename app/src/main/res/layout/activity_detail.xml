@@ -7,29 +7,43 @@
     android:orientation="vertical"
     tools:context=".DetailActivity">
 
+    <fragment
+        android:id="@+id/youtubeFragment"
+        android:name="com.google.android.youtube.player.YouTubePlayerFragment"
+        android:layout_width="match_parent"
+        android:layout_height="160dp" />
+
     <TextView
         android:id="@+id/tvDetailTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
         android:padding="3dp"
-        android:textStyle="bold"
-        android:textSize="18dp" />
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvDetailPopularity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tooltipText="Popularity" />
 
     <RatingBar
         android:id="@+id/rbDetailRating"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
+        style="@android:style/Widget.Holo.RatingBar.Indicator"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        style="@style/Widget.AppCompat.RatingBar.Indicator"
-        android:stepSize="0.1"
-        android:numStars="10"/>
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="10dp"
+        android:numStars="10"
+        android:stepSize="0.1" />
 
     <TextView
         android:id="@+id/tvDetailOverview"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="10dp"
         android:textSize="15dp"
-
         />
 </LinearLayout>
