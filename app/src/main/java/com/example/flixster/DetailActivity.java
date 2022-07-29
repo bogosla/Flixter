@@ -1,20 +1,18 @@
 package com.example.flixster;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.RatingBar;
-import android.widget.TextView;
 
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.RequestParams;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.example.flixster.databinding.ActivityDetailBinding;
 import com.example.flixster.models.Movie;
+import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerFragment;
-
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,34 +22,29 @@ import java.text.MessageFormat;
 
 import okhttp3.Headers;
 
-public class DetailActivity extends AppCompatActivity {
-    private YouTubePlayerFragment youtubeFragment;
+public class DetailActivity extends YouTubeBaseActivity {
     public static final String TAG = "DetailActivity";
+    private ActivityDetailBinding binding;
     private static final String API_KEY_YOUTUBE = "AIzaSyDoRaxkpZfogzp7OELF--yqC8EaoQQV5TI";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
 
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
         Movie movie = Parcels.unwrap(getIntent().getParcelableExtra("movie"));
-        // Fragment Youtube
-        youtubeFragment = (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtubeFragment);
 
-        TextView title = findViewById(R.id.tvDetailTitle);
-        TextView popularity = findViewById(R.id.tvDetailPopularity);
-        TextView overview = findViewById(R.id.tvDetailOverview);
-        RatingBar rating = findViewById(R.id.rbDetailRating);
-        // Populate
-        title.setText(movie.getTitle());
-        popularity.setText(MessageFormat.format("Popularity : {0}", movie.getPopularity()));
-        overview.setText(movie.getOverview());
-        rating.setRating(movie.getVote_average());
+        binding.tvTitle.setText(movie.getTitle());
+        binding.tvPopularity.setText(MessageFormat.format("Popularity : {0}", movie.getPopularity()));
+        binding.tvOverview.setText(movie.getOverview());
+        binding.rbRating.setRating(movie.getVote_average());
+
 
         // Making request to get the KEY
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        params.put("api_key", MainActivity.APIKEY);
+        params.put("api_key", MainActivity.API_KEY_MOVIE);
 
         client.get(movie.getMovie_path(), params, new JsonHttpResponseHandler() {
             @Override
@@ -60,28 +53,27 @@ public class DetailActivity extends AppCompatActivity {
                     JSONArray results = json.jsonObject.getJSONArray("results");
                     String key = results.getJSONObject(0).getString("key");
                     initializeYoutube(key);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                } catch (JSONException e) { e.printStackTrace(); }
             }
 
             @Override
             public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
-                Log.d(TAG, "Request Failed");
+                Log.e(TAG, "Request Failed");
             }
         });
     }
 
     // Initialize Youtube
     private void initializeYoutube(String key) {
-        youtubeFragment.initialize(API_KEY_YOUTUBE, new YouTubePlayer.OnInitializedListener() {
+        binding.youtubePlayer.initialize(API_KEY_YOUTUBE, new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 youTubePlayer.loadVideo(key);
             }
+
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-                Log.d(TAG, "Player Failed");
+                Log.e(TAG, "Player Failed");
             }
         });
     }

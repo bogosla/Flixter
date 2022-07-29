@@ -16,7 +16,6 @@ public class Movie {
     private double popularity;
     private Boolean adult;
     private final static String BASE_URL = "https://image.tmdb.org/t/p/w500";
-    private final String BASE_URL_MOVIE = "https://api.themoviedb.org/3/movie/%d/videos";
 
     // Needed by Parceler library
     public Movie() {}
@@ -65,7 +64,9 @@ public class Movie {
 
     public String getBackdrop_path() { return BASE_URL + backdrop_path; }
 
-    public String getMovie_path() { return String.format(BASE_URL_MOVIE, movie_id); }
+    public String getMovie_path() {
+        String BASE_URL_MOVIE = "https://api.themoviedb.org/3/movie/%d/videos";
+        return String.format(BASE_URL_MOVIE, movie_id); }
 
     public float getVote_average() { return vote_average; }
 
