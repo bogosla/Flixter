@@ -60,9 +60,9 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         int radius = 12;
 
         RequestOptions options = new RequestOptions()
+                .transform(new RoundedCorners(radius))
                 .centerCrop()
                 .placeholder(R.drawable.movie)
-                .transform(new RoundedCorners(radius))
                 .error(R.mipmap.ic_launcher_round);
 
         // if orientation in portrait and movie got 5 star, display backdrop_image
