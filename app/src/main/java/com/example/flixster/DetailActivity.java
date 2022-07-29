@@ -59,7 +59,7 @@ public class DetailActivity extends AppCompatActivity {
                 try {
                     JSONArray results = json.jsonObject.getJSONArray("results");
                     String key = results.getJSONObject(0).getString("key");
-                    Log.d(TAG, key.toString());
+                    initializeYoutube(key);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -73,11 +73,11 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     // Initialize Youtube
-    private void initializeYoutube(String api_key, String key) {
-        youtubeFragment.initialize(api_key, new YouTubePlayer.OnInitializedListener() {
+    private void initializeYoutube(String key) {
+        youtubeFragment.initialize(API_KEY_YOUTUBE, new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                Log.d(TAG, "Player OK");
+                youTubePlayer.loadVideo(key);
             }
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
