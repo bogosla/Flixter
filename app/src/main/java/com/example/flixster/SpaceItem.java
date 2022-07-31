@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class SpaceItem extends RecyclerView.ItemDecoration {
-    final int MARGIN = 32;
+    final int MARGIN = 40;
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         final int positionItem = parent.getChildAdapterPosition(view);
@@ -15,8 +15,7 @@ public class SpaceItem extends RecyclerView.ItemDecoration {
             return;
         }
         outRect.top = MARGIN;
-        outRect.bottom = MARGIN;
-        outRect.left = MARGIN + 5;
-        outRect.right = MARGIN + 5;
+        outRect.left = MARGIN - 10;
+        outRect.right = MARGIN - 10;
     }
 }

@@ -27,7 +27,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private final List<Movie> mMovies;
     private final Context mContext;
-    private final int RADIUS = 12;
+    private final int RADIUS = 14;
 
     private OnClickListener mClickListener;
 
@@ -100,7 +100,6 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                         .placeholder(R.drawable.movie)
                         .error(R.mipmap.ic_launcher_round)
                         .transform(new FitCenter(), new RoundedCorners(RADIUS))
-                        .centerCrop()
                         .into(itemBinding.itemPoster);
             else
                 Glide.with(mContext)
@@ -108,7 +107,6 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                         .placeholder(R.drawable.movie)
                         .error(R.mipmap.ic_launcher_round)
                         .transform(new FitCenter(), new RoundedCorners(RADIUS))
-                        .centerCrop()
                         .into(itemBinding.itemPoster);
             itemBinding.itemTitle.setText(m.getTitle());
             itemBinding.itemOverview.setText(m.getOverview());
