@@ -37,7 +37,10 @@ public class DetailActivity extends YouTubeBaseActivity {
 
         binding.tvTitle.setText(movie.getTitle());
         binding.tvPopularity.setText(MessageFormat.format("Popularity : {0}", movie.getPopularity()));
+        binding.tvReleaseDate.setText(MessageFormat.format("Release date : {0}", movie.getRelease_date()));
+
         binding.tvOverview.setText(movie.getOverview());
+
         binding.rbRating.setRating(movie.getVote_average());
 
 

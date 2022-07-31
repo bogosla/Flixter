@@ -27,7 +27,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/titleText"
-                android:textColor="@color/grey"
                 android:layout_marginBottom="7dp" />
 
             <TextView
