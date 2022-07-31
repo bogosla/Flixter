@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:orientation="horizontal"
-    android:gravity="center"
-    android:layout_height="wrap_content">
-
-    <ImageView
-        android:id="@+id/itemImg2"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="175dp"
-        android:layout_margin="0dp"
-        android:scaleType="center"
-        tools:srcCompat="@tools:sample/avatars" />
-</LinearLayout>
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/itemPoster2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/heightPoster"
+            android:layout_margin="0dp"
+            android:scaleType="center"
+            android:transitionName="image"
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/dsc_image" />
+
+        <ImageView
+            android:src="@android:drawable/ic_media_play"
+            android:layout_centerInParent="true"
+            android:layout_width="@dimen/iconSize"
+            android:layout_height="@dimen/iconSize"
+            android:contentDescription="@string/dsc_image"
+            app:tint="@color/black" />
+    </RelativeLayout>
+</layout>

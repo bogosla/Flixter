@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/itemPoster2"
+                android:layout_width="@dimen/widthLandPosterStar"
+                android:layout_height="@dimen/heightPoster"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:contentDescription="@string/dsc_image"
+                android:scaleType="center"
+                android:transitionName="image"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <ImageView
+                android:src="@android:drawable/ic_media_play"
+                android:layout_centerInParent="true"
+                android:layout_width="@dimen/iconSize"
+                android:layout_height="@dimen/iconSize"
+                android:contentDescription="@string/dsc_image"
+                app:tint="@color/black" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_gravity="center"
+            android:orientation="vertical" >
+            <TextView
+                android:id="@+id/itemTitle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/titleText"
+                android:transitionName="title" />
+
+            <TextView
+                android:id="@+id/itemOverview2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/overviewText"
+                android:textColor="@color/grey"
+                android:ellipsize="end"
+                android:layout_marginTop="3dp"
+                android:maxLines="7"
+                android:transitionName="overview" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

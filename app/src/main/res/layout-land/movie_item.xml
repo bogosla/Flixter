@@ -1,42 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <ImageView
-        android:id="@+id/itemImg"
-        android:layout_width="275dp"
-        android:layout_height="165dp"
-        android:contentDescription="@string/dsc_image"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="7dp"
-        android:layout_gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/itemTitle"
+        <ImageView
+            android:id="@+id/itemPoster"
+            android:layout_width="@dimen/widthPoster"
+            android:layout_height="@dimen/heightPoster"
+            android:contentDescription="@string/dsc_image"
+            android:transitionName="image"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
-            android:padding="3dp"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            android:layout_marginStart="7dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/itemOverview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:maxLines="6"
-            android:padding="3dp"
-            android:textSize="15dp"
-            android:typeface="sans" />
+            <TextView
+                android:id="@+id/itemTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/titleText"
+                android:layout_marginBottom="7dp" />
+
+            <TextView
+                android:id="@+id/itemOverview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/overviewText"
+                android:textColor="@color/grey"
+                android:ellipsize="end"
+                android:layout_marginTop="4dp"
+                android:maxLines="6" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+</layout>

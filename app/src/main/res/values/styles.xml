@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="pStyle">
+        <item name="android:padding">2dp</item>
+    </style>
+
+    <style name="titleText" parent="pStyle">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#393939</item>
+    </style>
+
+    <style name="overviewText" parent="pStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="popularityText" parent="overviewText">
+    </style>
+
+</resources>
+
+

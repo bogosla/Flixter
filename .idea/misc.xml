@@ -4,9 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/James DESTINE/AndroidStudioProjects/Flixster/app/src/main/res/layout-land/movie_item.xml" value="0.1693121693121693" />
+        <entry key="..\:/Users/James DESTINE/AndroidStudioProjects/Flixster/app/src/main/res/layout-land/movie_item_star.xml" value="0.1693121693121693" />
+        <entry key="..\:/Users/James DESTINE/AndroidStudioProjects/Flixster/app/src/main/res/layout/activity_detail.xml" value="0.2" />
         <entry key="..\:/Users/James DESTINE/AndroidStudioProjects/Flixster/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/James DESTINE/AndroidStudioProjects/Flixster/app/src/main/res/layout/movie_item.xml" value="0.2" />
-        <entry key="..\:/Users/James DESTINE/AndroidStudioProjects/Flixster/app/src/main/res/layout/movie_item_star.xml" value="0.2" />
+        <entry key="..\:/Users/James DESTINE/AndroidStudioProjects/Flixster/app/src/main/res/layout/movie_item_star.xml" value="0.1" />
+        <entry key="..\:/Users/James DESTINE/AndroidStudioProjects/Flixster/app/src/main/res/layout/movie_item_star_land.xml" value="0.2" />
         <entry key="..\:/Users/James DESTINE/AndroidStudioProjects/Flixster/app/src/main/res/layout/movies_item.xml" value="0.25" />
       </map>
     </option>
