@@ -52,7 +52,7 @@ public class DetailActivity extends YouTubeBaseActivity {
                 try {
                     JSONArray results = json.jsonObject.getJSONArray("results");
                     String key = results.getJSONObject(0).getString("key");
-                    initializeYoutube(key);
+                    initializeYoutube(key, movie);
                 } catch (JSONException e) { e.printStackTrace(); }
             }
 
@@ -64,11 +64,14 @@ public class DetailActivity extends YouTubeBaseActivity {
     }
 
     // Initialize Youtube
-    private void initializeYoutube(String key) {
+    private void initializeYoutube(String key, Movie movie) {
         binding.youtubePlayer.initialize(API_KEY_YOUTUBE, new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo(key);
+                if(movie.has_5_star())
+                    youTubePlayer.loadVideo(key);
+                else
+                    youTubePlayer.cueVideo(key);
             }
 
             @Override

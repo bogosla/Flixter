@@ -9,8 +9,8 @@
 
         <ImageView
             android:id="@+id/itemPoster"
-            android:layout_width="275dp"
-            android:layout_height="165dp"
+            android:layout_width="@dimen/widthPoster"
+            android:layout_height="@dimen/heightPoster"
             android:contentDescription="@string/dsc_image"
             android:transitionName="image"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/titleText"
+                android:textColor="@color/grey"
                 android:layout_marginBottom="7dp" />
 
             <TextView
@@ -34,6 +35,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/overviewText"
+                android:textColor="@color/grey"
+                android:ellipsize="end"
                 android:layout_marginTop="4dp"
                 android:maxLines="6" />
         </LinearLayout>

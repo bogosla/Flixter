@@ -11,7 +11,7 @@
         <com.google.android.youtube.player.YouTubePlayerView
             android:id="@+id/youtubePlayer"
             android:layout_width="match_parent"
-            android:layout_height="173dp" />
+            android:layout_height="185dp" />
 
         <ScrollView
             android:layout_width="match_parent"

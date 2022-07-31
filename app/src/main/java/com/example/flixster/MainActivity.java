@@ -1,6 +1,8 @@
 package com.example.flixster;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,25 +41,30 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         RecyclerView rcMovies = binding.rcMovies;
+         rcMovies.addItemDecoration(new SpaceItem());
 
+        // Fetch movies data
         fetchMovies();
+
         adapter = new MovieAdapter(movies, this);
 
-        adapter.setClickListener((view, position, movie) -> {
-            // start Detail activity
+        // Start ActivityDetail with transition..
+        adapter.setClickListener((view, position, movie, v) -> {
             Intent i = new Intent(MainActivity.this, DetailActivity.class);
+            // Pass movie object
             i.putExtra("movie", Parcels.wrap(movie));
+            ActivityOptionsCompat options;
 
-            // Pairs for transitions
-            // Pair<View, String> imageTransition = Pair.create(view.findViewById(R.id.itemImg), "image");
-//            View title = view.findViewById(R.id.itemTitle);
-//            if (title != null) {
-                // Pair<View, String> titleTransition = Pair.create(title, "title");
-                // Pair<View, String> overviewTransition = Pair.create(view.findViewById(R.id.itemOverview), "overview");
-//            }
-            // ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, transiton , "title");
-            // ActivityCompat.titlestartActivity(MainActivity.this, i, options.toBundle());
-             startActivity(i);
+            if (v instanceof MovieAdapter.ViewHolderStar)
+                options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, view.findViewById(R.id.itemPoster2) , "title");
+            else {
+                Pair<View, String> imageTransition = Pair.create(view.findViewById(R.id.itemPoster), "image");
+                Pair<View, String> titleTransition = Pair.create(view.findViewById(R.id.itemTitle), "title");
+                Pair<View, String> overviewTransition = Pair.create(view.findViewById(R.id.itemOverview), "overview");
+                options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, imageTransition, titleTransition, overviewTransition);
+            }
+            // Go
+            startActivity(i, options.toBundle());
         });
 
         rcMovies.setAdapter(adapter);

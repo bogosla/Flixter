@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="heightPoster">180dp</dimen>
+    <dimen name="widthPoster">150dp</dimen>
+    <dimen name="widthLandPoster">180dp</dimen>
+    <dimen name="heightLandPoster">190dp</dimen>
+    <dimen name="widthLandPosterStar">260dp</dimen>
+    <dimen name="iconSize">48dp</dimen>
+</resources>
